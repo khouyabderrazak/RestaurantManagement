@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Restaurant>
+
+
+
+<div class="d-flex justify-content-end p-2 shadow rounded mb-4">
+        <a class="btn btn-primary" asp-action="Create"> Add Restaurant </a>
+    </div>
+
+<div>
+
+
+    <partial name="_MessageViewPartial" />
+
+    <table class="table table-hover shadow p-5 rounded">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Image</th>
+            <th>Address</th>
+            <th>Cuisine</th>
+            <th>Note</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+               @foreach(Restaurant item in Model)
+                {
+                <tr>
+                    <td>@item.Nom</td>
+                    <td>
+                        <img src="/images/@item.ImagePath" style="width:100px;" class="img-thumbnail" />
+                    </td>
+                    <td>@item.Adresse</td>
+                    <td>@item.Cuisine</td>
+                    <td>@item.Note </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">
+                           <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="ms-4 text-danger">
+                           <i class="bi bi-trash3-fill"></i>
+                        </a>
+
+                        <a asp-action="Details" asp-route-id="@item.Id" class="ms-4 text-danger">
+                            <i class="bi bi-eye-fill text-success"></i>
+                        </a>
+
+                    </td>
+
+                </tr>
+                }
+    </tbody>
+</table>
+</div>

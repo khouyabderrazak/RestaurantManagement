@@ -1,0 +1,40 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Restaurant
+
+<div style="width:100%; height:100%; position:fixed;top:0;right:0;left:0;left:0; background-color:black;opacity:0.4;z-index:2;" class="d-flex justify-content-center align-items-center">
+
+    <div class="mx-auto shadow p-3 my-auto bg-white" style="z-index:10;opacity:1;">
+        <div class="">
+
+        <div class="text-center">
+                <i class="bi bi-question-diamond text-danger" style="font-size:6rem"></i>
+
+        <div>
+            <p>Ete-vous sur de vouloir supprimer le restrant: </p>
+             <ul class="list-unstyled">
+                <li>@Model.Nom</li>
+                <li>@Model.Adresse</li>
+                <li>@Model.Cuisine</li>
+                <li>@Model.Note</li>
+             </ul>
+        </div>
+
+        </div>
+        <form class="w-100 d-flex justify-content-between" asp-action="Delete">
+            <!-- Submitbutton -->
+                <a data-mdb-ripple-init asp-action="Index" class="btn btn-primary btn-block mb-4">Annuler</a>
+                <button data-mdb-ripple-init type="submit" class="btn btn-danger btn-block mb-4">Valider</button>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

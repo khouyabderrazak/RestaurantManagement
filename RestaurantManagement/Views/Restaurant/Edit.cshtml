@@ -1,0 +1,88 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Restaurant
+
+<div class="row">
+    <div class="col-sm-6 mx-auto shadow p-3 my-auto">
+
+        <div class="text-center mb-2">
+            <h4 class="fst-italic">Update Restaurant</h4>
+        </div>
+        <form class="w-100" asp-action="Edit" enctype="multipart/form-data">
+            <!-- Name input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Nom" class="form-label">Nom</label>
+                <input asp-for="Nom" type="text" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger mt-1"></span>
+            </div>
+
+
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Adresse" class="form-label">Adresse</label>
+                <input asp-for="Adresse" type="text" class="form-control" />
+                <span asp-validation-for="Adresse" class="text-danger mt-1"></span>
+
+            </div>
+
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Cuisine" class="form-label">Cuisine</label>
+                <input asp-for="Cuisine" type="text" class="form-control" />
+                <span asp-validation-for="Cuisine" class="text-danger mt-1"></span>
+
+            </div>
+
+
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Note" class="form-label">Note</label>
+                <input asp-for="Note" type="number" class="form-control" />
+                <span asp-validation-for="Note" class="text-danger mt-1"></span>
+
+            </div>
+
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Image" class="form-label">Image</label>
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <input asp-for="Image" type="file" onchange="loadFile(event)" class="form-control" />
+                    </div>
+                    <div class="col-sm-6">
+                        <img id="MyImg" style="width:240px;display:none;" src="#" class="img-thumbnail" alt="Aperçu de l'image" />
+                    </div>
+                </div>
+
+                <span asp-validation-for="Image" class="text-danger mt-1"></span>
+            </div>
+            <!-- Submit button -->
+            <div class="d-flex justify-content-between">
+                <a data-mdb-ripple-init asp-action="Index" class="btn btn-secondary btn-block mb-4"><i class="bi bi-arrow-left-short"></i></a>
+               <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-4">Valider</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+                  var loadFile = function(event) {
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                        var myImg = document.getElementById("MyImg");
+                        myImg.style.display = "block";
+                        myImg.src = reader.result;
+                    };
+                    reader.readAsDataURL(event.target.files[0]);
+                };
+
+    </script>
+}
